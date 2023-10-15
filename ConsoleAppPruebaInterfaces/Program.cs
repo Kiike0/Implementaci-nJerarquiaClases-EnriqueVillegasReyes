@@ -222,7 +222,7 @@ public class EditorGrafico
                 Console.WriteLine("No ingresaste un número válido");
                 circuloOk = false;
             }
-            if (radio> 600)
+            if (radio> 400)
             {
                 circuloOk = false;
                 Console.WriteLine("Error: El tamaño del círculo se sale de la pantalla (Máx:800x600)");
