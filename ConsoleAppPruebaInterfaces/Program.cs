@@ -252,10 +252,10 @@ public class EditorGrafico
                 {
                     case 1:
                         Console.WriteLine("Inserta las nuevas coordenadas (x, y) para mover el gráfico:");
-                        Console.WriteLine("Inserta el valor x:");
                         Boolean valoresOk = false;
                         while (!valoresOk)
                         {
+                            Console.WriteLine("Inserta el valor x:");
                             if (int.TryParse(Console.ReadLine(), out int newX))
                             {
                                 Console.WriteLine("Inserta el valor y:");
