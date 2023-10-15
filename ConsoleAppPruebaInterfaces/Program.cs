@@ -147,9 +147,20 @@ public class EditorGrafico
                 Console.WriteLine("No ingresaste un número válido");
                 puntoOk = false;
             }
+            if(puntoOk)
+            {
+                Punto puntoComprobacion = new Punto(puntox, puntoy);
+                if (!puntoComprobacion.mover(puntox, puntoy))
+                {
+                    puntoOk = false;
+                    Console.WriteLine("Error: El punto se sale de la pantalla (Máx:800x600)");
+                }
+            }
+            
         }
         Punto punto = new Punto(puntox, puntoy);
         graficoCompuesto.AgregarElemento(punto);
+
 
 
         //Insertamos los valores del Rectangulo para crear un Objeto Rectangulo para agregarlo al grafico
@@ -182,9 +193,15 @@ public class EditorGrafico
                 Console.WriteLine("No ingresaste un número válido");
                 rectanguloOk = false;
             }
+            if (ancho>800 || alto>600)
+            {
+                rectanguloOk = false;
+                Console.WriteLine("Error: El tamaño del rectángulo se sale de la pantalla (Máx:800x600)");
+            }
         }
         Rectangulo rectangulo = new Rectangulo(puntox, puntoy, ancho, alto);
         graficoCompuesto.AgregarElemento(rectangulo);
+
 
         //Insertamos los valores del Circulo para crear un Objeto Circulo para agregarlo al grafico
         Console.WriteLine("Inserta los valores del Círculo: ");
@@ -204,6 +221,11 @@ public class EditorGrafico
             {
                 Console.WriteLine("No ingresaste un número válido");
                 circuloOk = false;
+            }
+            if (radio> 600)
+            {
+                circuloOk = false;
+                Console.WriteLine("Error: El tamaño del círculo se sale de la pantalla (Máx:800x600)");
             }
         }
         Circulo circulo = new Circulo(puntox, puntoy, radio);
@@ -247,7 +269,7 @@ public class EditorGrafico
                                     }
                                     else
                                     {
-                                        Console.WriteLine("El gráfico no puede moverse fuera de la pantalla.");
+                                        Console.WriteLine("El gráfico no puede moverse fuera de la pantalla (Máximo: 800x600)");
                                         valoresOk = false;
                                     }
                                 }
@@ -262,6 +284,7 @@ public class EditorGrafico
                                 Console.WriteLine("Valor x no válido.");
                                 valoresOk = false;
                             }
+                            
                         }
                         break;
                     case 2:
