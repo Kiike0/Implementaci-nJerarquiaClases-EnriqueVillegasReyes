@@ -29,7 +29,7 @@ public class Punto : IGrafico
     }
     public virtual String dibujar()
     {
-        return "Los valores x e y del punto son: " + x + ", " + y;
+        return "Punto: Valores x e y: " + x + ", " + y;
     }
 
 }
@@ -45,7 +45,7 @@ public class Circulo : Punto
 
     public override String dibujar()
     {
-        return "El círculo tiene " + radio + " de radio y sus valores x e y son: " + x + ", " + y;
+        return "Círculo: Radio: " + radio + " Valores x e y: " + x + ", " + y;
     }
 
 }
@@ -63,7 +63,7 @@ public class Rectangulo : Punto
 
     public override String dibujar()
     {
-        return "El rectángulo tiene " + ancho + " de ancho y " + alto + " de alto, y sus valores x e y son: " + x + ", " + y;
+        return "Rectángulo: Ancho: " + ancho + " Alto: " + alto + " Valores x e y: " + x + ", " + y;
     }
 
 }
