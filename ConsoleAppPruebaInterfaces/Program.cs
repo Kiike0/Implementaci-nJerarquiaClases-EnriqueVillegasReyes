@@ -1,7 +1,9 @@
-﻿public interface IGrafico
+﻿using System.Reflection.Metadata.Ecma335;
+
+public interface IGrafico
 {
     public Boolean mover(int x, int y);
-    public void dibujar();
+    public String dibujar();
 }
 
 public class Punto : IGrafico
@@ -25,9 +27,9 @@ public class Punto : IGrafico
             return true;
         }
     }
-    public virtual void dibujar()
+    public virtual String dibujar()
     {
-        Console.WriteLine("Los valores x e y del punto son: " + x + ", " + y);
+        return "Los valores x e y del punto son: " + x + ", " + y;
     }
 
 }
@@ -41,9 +43,9 @@ public class Circulo : Punto
         this.radio = radio;
     }
 
-    public override void dibujar()
+    public override String dibujar()
     {
-        Console.WriteLine("El círculo tiene " + radio + " de radio y sus valores x e y son: " + x + ", " + y);
+        return "El círculo tiene " + radio + " de radio y sus valores x e y son: " + x + ", " + y;
     }
 
 }
@@ -59,9 +61,9 @@ public class Rectangulo : Punto
         this.alto = alto;
     }
 
-    public override void dibujar()
+    public override String dibujar()
     {
-        Console.WriteLine("El rectángulo tiene " + ancho + " de ancho y " + alto + " de alto, y sus valores x e y son: " + x + ", " + y);
+        return "El rectángulo tiene " + ancho + " de ancho y " + alto + " de alto, y sus valores x e y son: " + x + ", " + y;
     }
 
 }
@@ -88,12 +90,15 @@ public class GraficoCompuesto : IGrafico
 
         return true;
     }
-    public void dibujar()
+    public String dibujar()
     {
-        foreach (var elemento in elementos) //Recorre elemento a elemento para imprimirlo (dibujarlo)
+        string _result = "";
+        foreach (var elemento in elementos)
         {
-            elemento.dibujar();
+            _result += elemento.dibujar() +"\n";
         }
+        return _result;
+
     }
 
     public void AgregarElemento(IGrafico elemento)
@@ -234,7 +239,7 @@ public class EditorGrafico
         //Siguiente paso: dibujar el gráfico
         Console.WriteLine("PASO 2:");
         Console.WriteLine("Aquí va el grafico");
-        graficoCompuesto.dibujar();
+        Console.WriteLine(graficoCompuesto.dibujar());
 
         //Ultimo paso: Elegir si moverlo o salir
         Console.WriteLine("PASO 3:");
@@ -264,7 +269,7 @@ public class EditorGrafico
                                     if (graficoCompuesto.mover(newX, newY))
                                     {
                                         Console.WriteLine("Gráfico movido exitosamente.");
-                                        graficoCompuesto.dibujar();
+                                        Console.WriteLine(graficoCompuesto.dibujar());
                                         valoresOk = true;
                                     }
                                     else
