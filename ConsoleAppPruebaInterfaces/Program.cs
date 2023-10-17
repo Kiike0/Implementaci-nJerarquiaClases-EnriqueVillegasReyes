@@ -119,7 +119,7 @@ public class Rectangulo : Punto
         set
         {
 
-            if (value < 0 || value > 800)
+            if (value < 0 || value > 600)
             {
                 throw new saleDePantalla("Se sale de pantalla (Máx. 800x600)");
             }
